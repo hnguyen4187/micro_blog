@@ -9,30 +9,60 @@ get '/' do
   erb :home
 end
 
-post '/home' do
-
-end
-
-post '/users/new' do
+post '/single_user/new' do
   puts params
-end
+    @new_user = User.create(params[:new_user])
+    redirect "/single_user/#{@new_user.id}"
     
-get '/profile' do 
-  erb :profile
 end
 
-get '/users' do 
+get '/all_users' do 
   @users = User.all
-    erb :user
+    erb :all_users
 end
 
-get '/users/:id' do
+get '/single_user/:id' do
     @user = User.find(params[:id])
     @posts = @user.posts
-    erb :user
+    erb :single_user
 end
     
 
-get '/feed' do
-    erb :feed
+get '/post' do
+    erb :post
 end
+
+get '/post/:id' do
+    @post = Post.find(params[:id])
+    erb :post
+end
+
+post '/sign-in' do
+     @user = User.where(fname: params[:fname]).first
+  if @user.password == params[:password]
+    session[:user_id] = @user.id
+    redirect "/single_user/#{@user.id}"
+  else
+    redirect '/sign_in_failed'
+  end
+end 
+
+get '/log_out' do
+     
+    session.clear
+    redirect "/"
+ 
+end 
+
+get '/single_user/delete/:id' do
+    @user = User.find(params[:id])
+    @user.destroy
+    session.clear
+    redirect "/"
+    end 
+
+post '/post/new' do
+    @new_post = Post.create(params[:new_post])
+    redirect "/post/#{@new_post.id}"
+end
+
