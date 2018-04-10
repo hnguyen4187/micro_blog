@@ -21,15 +21,17 @@ get '/profile' do
   erb :profile
 end
 
-get '/profile/:id' do
+get '/users' do 
+  @users = User.all
+    erb :user
+end
+
+get '/users/:id' do
     @user = User.find(params[:id])
     @posts = @user.posts
     erb :user
 end
     
-get '/users' do 
-  users.all
-end
 
 get '/feed' do
     erb :feed
