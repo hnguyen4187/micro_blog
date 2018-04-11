@@ -1,0 +1,21 @@
+<%= erb :header %>
+
+  <div class="single_user">
+    <div class="name">
+    First Name:
+<!--  "@" calls variable from app.rb -->
+      <%= @user.fname %>
+      <br> Last Name:
+      <%= @user.lname %>
+      <br>
+        <button id="log_out"><a href="/log_out">Log Out</a></button>
+        <button id="delete"><a href="/single_user/delete/<%= @user.id %>">Delete Account</a></button>
+     </div>
+
+    <form method="post" action="/post/new">
+    <input type= "text" name="[new_post]title" placeholder="Title">
+    <textarea maxlength = 150 name="[new_post]content" placeholder="content">
+    </textarea>
+    <input type="submit">
+
+    </form>
