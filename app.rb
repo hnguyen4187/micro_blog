@@ -13,10 +13,10 @@ post '/single_user/new' do
   puts params
     @new_user = User.create(params[:new_user])
     redirect "/single_user/#{@new_user.id}"
-    
+
 end
 
-get '/all_users' do 
+get '/all_users' do
   @users = User.all
     erb :all_users
 end
@@ -26,7 +26,6 @@ get '/single_user/:id' do
     @posts = @user.posts
     erb :single_user
 end
-    
 
 get '/post' do
     erb :post
@@ -45,24 +44,26 @@ post '/sign-in' do
   else
     redirect '/sign_in_failed'
   end
-end 
+end
 
 get '/log_out' do
-     
     session.clear
     redirect "/"
- 
-end 
+end
 
 get '/single_user/delete/:id' do
     @user = User.find(params[:id])
     @user.destroy
     session.clear
     redirect "/"
-    end 
+    end
 
 post '/post/new' do
     @new_post = Post.create(params[:new_post])
     redirect "/post/#{@new_post.id}"
 end
 
+get '/posts' do
+  @posts = Post.all
+  erb :posts 
+end
