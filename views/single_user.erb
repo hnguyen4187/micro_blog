@@ -4,14 +4,26 @@
     <div class="name">
     First Name:
 <!--  "@" calls variable from app.rb -->
-      <%= @user.fname %>
+      <%= current_user.fname %>
       <br> Last Name:
-      <%= @user.lname %>
+      <%= current_user.lname %>
       <br>
         <button id="log_out"><a href="/log_out">Log Out</a></button>
         <button id="delete"><a href="/single_user/delete/<%= @user.id %>">Delete Account</a></button>
      </div>
-
+     
+     <% if current_user.id == @user.id %>
+     
+     <h2>Edit Profile Here</h2>
+     <form method="post" action="/single_user/edit/<%= @user.id %>">
+     <input type="text" name="[user]fname" placeholder="first name">
+     <input type="text" name="[user]lname" placeholder="last name">
+     <input type="text" name="[user]password" placeholder="password">
+      </form>
+      <input type="submit" value="Submit Changes">
+      
+      <% end %>
+    <h2>Post Here</h2>
     <form method="post" action="/post/new">
     <input type= "text" name="[new_post]title" placeholder="Title">
     <textarea maxlength = 150 name="[new_post]content" placeholder="content">
