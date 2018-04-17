@@ -1,6 +1,8 @@
 <% @posts.each do |post| %>
-  <div class="post">
-    <h1><%= post.title %></h1>
-    <p><%= post.content %></p>
-  </div>
+  <container id="post_area">
+      <div class="post">
+        <h1 id="post_title"><%= post.title %></h1>
+        <p id="post_content"><%= post.content %></p>
+      </div>
+</container>
 <% end %>

@@ -3,6 +3,7 @@ require 'sinatra/activerecord'
 require 'bundler/setup'
 require './models'
 set :database, "sqlite3:micro_blog.sqlite3"
+enable :sessions
 
 def current_user
     if session[:user_id]
@@ -19,6 +20,9 @@ post '/sign-in' do
      @user = User.where(fname: params[:fname]).first
   if @user.password == params[:password]
     session[:user_id] = @user.id
+      puts "*****************"
+    puts session.inspect
+     puts "*****************"
     redirect "/single_user/#{@user.id}"
   else
     redirect '/sign_in_failed'
@@ -39,8 +43,10 @@ end
 
 
 get '/single_user/:id' do
+    puts "*****************"
+    puts session[:user_id]
+     puts "*****************"
     @user = User.find(params[:id])
-    session[:user_id] = @user.id
     @posts = @user.posts
     erb :single_user
 end
@@ -65,11 +71,15 @@ get '/all_users' do
 end
 
 get '/post' do
+    @post = Post.find(params[:id])
     erb :post
 end
 
 get '/post/:id' do
     @post = Post.find(params[:id])
+    puts "*****************"
+    puts session[:user_id]
+     puts "*****************"
     erb :post
 end
 

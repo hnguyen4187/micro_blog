@@ -4,9 +4,20 @@
     <head>
         <meta charset="utf-8">
         <title>micro blog </title>
+        <link rel="stylesheet" href="/microcss.css">
     </head>
     <body>
-        <header id="header">Our First App</header>
+        <div id="header_area">
+            <header>FOR THE LOVE OF MOMS</header>
+            <p>THE SITE WHERE MOMS SHARE TIPS, IDEAS AND EXPERIENCES.</p>
+        </div>
+        <ul id="nav">
+            <li><a href="/" id="nav_button">HOME</a></li>
+            <li><a href="/posts" id="nav_button">POST</a></li>
+            <% if !current_user.nil? %>
+            <li><a href="/single_user/<%= current_user.id %>" id="nav_button">MY PROFILE</a></li>
+            <% end %>
+        </ul>
         <%= yield %>
         <footer id="footer">Copyright 2018</footer>
     </body>
