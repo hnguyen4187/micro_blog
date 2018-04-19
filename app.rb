@@ -16,6 +16,10 @@ get '/' do
   erb :home
 end
 
+get '/sign_in_failed' do
+    erb :sign_in_failed
+end
+
 post '/sign-in' do
      @user = User.where(fname: params[:fname]).first
   if @user.password == params[:password]

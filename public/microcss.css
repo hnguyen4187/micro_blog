@@ -6,6 +6,7 @@ body{
 p{
     font-family: arial;
     margin: 0px 0px 0px 0px;
+    color: white;
 }
 
 h2{
@@ -79,9 +80,15 @@ container#post_area{
     text-align: center;
 }
 
+textarea {
+    box-sizing: border-box;
+
+    width: 75%;
+}
+
 #post_title{
     background-color: grey;
     color: white;
     text-align: left;
-    padding-left: 50px;
+    padding: 50px;
 }
