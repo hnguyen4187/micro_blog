@@ -7,7 +7,7 @@ enable :sessions
 
 def current_user
     if session[:user_id]
-        @current_user = User.find(session[:user_id])
+    @current_user = User.find(session[:user_id])
     end
 end
 
@@ -17,17 +17,16 @@ get '/' do
 end
 
 post '/sign-in' do
-     @user = User.where(fname: params[:fname]).first
-  if @user.password == params[:password]
+    @user = User.where(fname: params[:fname]).first
+    if !@user.nil? && @user.password == params[:password]
     session[:user_id] = @user.id
-      puts "*****************"
+    puts "*****************"
     puts session.inspect
-     puts "*****************"
+    puts "*****************"
     redirect "/single_user/#{@user.id}"
-  else
-    redirect '/sign_in_failed'
+    end
+    redirect '/'
   end
-end
 
 get '/log_out' do
     session.clear
@@ -35,12 +34,10 @@ get '/log_out' do
 end
 
 post '/single_user/new' do
-  puts params
+    puts params
     @new_user = User.create(params[:new_user])
     redirect "/single_user/#{@new_user.id}"
-
 end
-
 
 get '/single_user/:id' do
     puts "*****************"
@@ -48,6 +45,7 @@ get '/single_user/:id' do
      puts "*****************"
     @user = User.find(params[:id])
     @posts = @user.posts
+    puts @posts
     erb :single_user
 end
 
@@ -84,11 +82,13 @@ get '/post/:id' do
 end
 
 post '/post/new' do
-    @new_post = Post.create(params[:new_post])
+    @new_post = Post.new(params[:new_post])
+    @new_post.user_id = current_user.id
+    @new_post.save
     redirect "/post/#{@new_post.id}"
 end
 
 get '/posts' do
   @posts = Post.all
-  erb :posts 
+  erb :posts
 end

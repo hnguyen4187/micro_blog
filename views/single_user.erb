@@ -1,34 +1,42 @@
 <div class="single_user">
     <div class="name">
-    First Name:
-      <%= current_user.fname %>
-      <br> 
-    Last Name:
-      <%= current_user.lname %>
-      <br>
-     </div>
-     
-     <% if current_user.id == @user.id %>
-     
+      <p2>First Name: <%= @user.fname %></p>
+      <p2>Last Name: <%= @user.lname %></p>
+    </div>
+    <% if @user.id == @user.id %>
+
+     <% @posts.each do |post| %>
+      <container id="post_area">
+        <div class="post">
+          <h3 id="post_title">Title: <%= post.title %></h1>
+          <p id="post_content">Content: <%= post.content %></p>
+        </div>
+        <br>
+      </container>
+     <% end %>
+
     <div class="info_box">
-            <h2>Edit Profile Here</h2>
-                 <form method="post" action="/single_user/edit/<%= @user.id %>">
-                 <input type="text" name="[user]fname" placeholder="first name">
-                 <input type="text" name="[user]lname" placeholder="last name">
-                 <input type="text" name="[user]password" placeholder="password">
-                  <input type="submit" value="Submit Changes">
-                  </form>
-      
-      <% end %>
-            <h2>Post Here</h2>
-                <form method="post" action="/post/new">
-                <input type= "text" name="[new_post]title" placeholder="Title">
-                <textarea maxlength = 150 name="[new_post]content" placeholder="content">
-                </textarea>
-                <input type="submit">
+      <h2>Edit Profile Here</h2>
+        <form method="post" action="/single_user/edit/<%= @user.id %>">
+          <input type="text" name="[user]fname" placeholder="First Name">
+          <input type="text" name="[user]lname" placeholder="Last Name">
+          <input type="text" name="[user]password" placeholder="Password">
+          <input type="submit" value="Submit Changes">
+        </form>
+    <% end %>
 
-    </form></div>
+    <h2>Post Here</h2>
+      <form method="post" action="/post/new">
+        <input type= "text" name="[new_post]title" placeholder="Title:" required>
+        <br>
+        <textarea maxlength = 150 name="[new_post]content" placeholder="Content:" required></textarea>
+        <br>
+        <input type="submit">
+      </form>
+    </div>
 
-        <button id="log_out"><a href="/log_out">Log Out</a></button>
-        <button id="delete"><a href="/single_user/delete/<%= @user.id %>">Delete Account</a></button>
+    <div class = "bottom-btn">
+      <button id="log_out"><a href="/log_out">Log Out</a></button>
+      <button id="delete"><a href="/single_user/delete/<%= @user.id %>">Delete Account</a></button>
+    </div>
 </div>
