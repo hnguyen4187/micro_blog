@@ -1,9 +1,10 @@
 <div class="users">
   <% @users.each do |user| %>
     <div class="name">First Name:
-       <%= user.fname %>
-       <br> Last Name:
-       <%=user.lname %>
-       <br>
-      <% end %>
+      <%= user.fname %>
+      <br> Last Name:
+      <%=user.lname %>
+      <p><a href="/single_user/<%= current_user.id %>"> See User Profile</p>
+      <br>
+  <% end %>
 </div>

@@ -1,87 +1,99 @@
 body{
-    background-color: paleturquoise;
-    max-width: 100%;
+   background-color: paleturquoise;
+   max-width: 100%;
 }
 
 p{
-    font-family: arial;
-    margin: 0px 0px 0px 0px;
+   font-family: arial;
+   margin: 0px 0px 0px 0px;
+   color: white;
+}
+
+p2{
+  color: black;
 }
 
 h2{
-    margin: 0px;
-}
-
-#form_field{
-    margin: 20px;
+   margin: 0px;
 }
 
 input{
-    margin: 5px;
+   margin: 5px;
 }
+
+#form_field{
+   margin: 20px;
+}
+
 
 #header_area{
-    width: 100%;
-    text-align: center;
-    margin: 0px 0px 0px 0px;
-    padding: 10px;
-}
-header{
-    font-size: 50px;
-    font-weight: 600;
-    font-family: arial;
-    text-align: center;
-    margin: 0px 0px 0px 0px;
+   width: 100%;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+   padding: 10px;
 }
 
+header{
+   font-size: 50px;
+   font-weight: 600;
+   font-family: arial;
+   text-align: center;
+   margin: 0px 0px 0px 0px;
+ }
+
 ul#nav{
-    font-family: arial;
-    color: red;
-    font-weight: 800;
-    font-size: 20px;
-    display: flex;
-    background: white;
-    border: 0px;
-    margin: 20px 0px 0px 0px;
-    padding: 15px;
-    width: 100%;
-    list-style-type:none;
+   font-family: arial;
+   color: red;
+   font-weight: 800;
+   font-size: 20px;
+   display: flex;
+   background: white;
+   border: 0px;
+   margin: 20px 0px 0px 0px;
+   padding: 15px;
+   width: 100%;
+   list-style-type:none;
 }
 
 a#nav_button{
-    margin-left: 20px;
-    text-decoration: none;
-    color: black;
+   margin-left: 20px;
+   text-decoration: none;
+   color: black;
 }
 
 a#nav_button:hover{
-    color: firebrick;
+   color: firebrick;
 }
 
 img#diapers{
-    width: 100%;
-    margin: 0px 0px 0px 0px;
+   width: 100%;
+   margin: 0px 0px 0px 0px;
 }
 
 div.info_box{
-    display: block;
-    color: white;
-    font-family: arial;
-    max-width: 800px;
-    text-align: center;
-    margin: 0 auto;
-    padding: 20px 0px 20px 0px;
-    border-radius: 50px;
-    background: grey;
+   display: block;
+   color: white;
+   font-family: arial;
+   max-width: 800px;
+   text-align: center;
+   margin: 0 auto;
+   padding: 20px 0px 20px 0px;
+   border-radius: 50px;
+   background: grey;
 }
 
 container#post_area{
-    text-align: center;
+   text-align: center;
+}
+
+textarea {
+   box-sizing: border-box;
+   width: 75%;
 }
 
 #post_title{
-    background-color: grey;
-    color: white;
-    text-align: left;
-    padding-left: 50px;
+   background-color: grey;
+   color: white;
+   text-align: left;
+   padding: 50px;
 }
