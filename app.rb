@@ -7,7 +7,7 @@ enable :sessions
 
 def current_user
     if session[:user_id]
-        @current_user = User.find(session[:user_id])
+    @current_user = User.find(session[:user_id])
     end
 end
 
@@ -17,17 +17,16 @@ get '/' do
 end
 
 post '/sign-in' do
-     @user = User.where(fname: params[:fname]).first
-  if @user.password == params[:password]
+    @user = User.where(fname: params[:fname]).first
+    if !@user.nil? && @user.password == params[:password]
     session[:user_id] = @user.id
-      puts "*****************"
+    puts "*****************"
     puts session.inspect
-     puts "*****************"
+    puts "*****************"
     redirect "/single_user/#{@user.id}"
-  else
-    redirect '/sign_in_failed'
+    end
+    redirect '/'
   end
-end
 
 get '/log_out' do
     session.clear
@@ -35,12 +34,10 @@ get '/log_out' do
 end
 
 post '/single_user/new' do
-  puts params
+    puts params
     @new_user = User.create(params[:new_user])
     redirect "/single_user/#{@new_user.id}"
-
 end
-
 
 get '/single_user/:id' do
     puts "*****************"

@@ -8,8 +8,8 @@
      <% @posts.each do |post| %>
       <container id="post_area">
         <div class="post">
-          <h3 id="post_title"><%= post.title %></h1>
-          <p id="post_content"><%= post.content %></p>
+          <h3 id="post_title">Title: <%= post.title %></h1>
+          <p id="post_content">Content: <%= post.content %></p>
         </div>
         <br>
       </container>
@@ -27,13 +27,16 @@
 
     <h2>Post Here</h2>
       <form method="post" action="/post/new">
-        <input type= "text" name="[new_post]title" placeholder="Title:">
+        <input type= "text" name="[new_post]title" placeholder="Title:" required>
         <br>
-        <textarea maxlength = 150 name="[new_post]content" placeholder="Content:"></textarea>
+        <textarea maxlength = 150 name="[new_post]content" placeholder="Content:" required></textarea>
         <br>
         <input type="submit">
       </form>
     </div>
+
+    <div class = "bottom-btn">
       <button id="log_out"><a href="/log_out">Log Out</a></button>
       <button id="delete"><a href="/single_user/delete/<%= @user.id %>">Delete Account</a></button>
+    </div>
 </div>

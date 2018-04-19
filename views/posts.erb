@@ -1,8 +1,8 @@
-<% @posts.each do |post| %>
+<% @posts.reverse[0, 10].each do |post| %>
   <container id="post_area">
       <div class="post">
-        <h3 id="post_title"><%= post.title %></h1>
-        <p id="post_content"><%= post.content %></p>
+        <h3 id="post_title">Title: <%= post.title %></h1>
+        <p id="post_content">Content: <%= post.content %></p>
       </div>
 </container>
 <% end %>

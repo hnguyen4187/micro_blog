@@ -25,7 +25,6 @@ input{
    margin: 20px;
 }
 
-
 #header_area{
    width: 100%;
    text-align: center;
@@ -39,6 +38,7 @@ header{
    font-family: arial;
    text-align: center;
    margin: 0px 0px 0px 0px;
+   color: white;
  }
 
 ul#nav{
@@ -95,5 +95,27 @@ textarea {
    background-color: grey;
    color: white;
    text-align: left;
-   padding: 50px;
+   padding: 10px;
+}
+
+#post_content{
+  text-align: left;
+}
+
+#log_out a{
+  text-decoration: none;
+}
+
+#delete a{
+  text-decoration: none;
+}
+
+.bottom-btn{
+  text-align: center;
+  padding-top: 10px;
+}
+
+#footer{
+  text-align: center;
+  padding-top: 5px;
 }
