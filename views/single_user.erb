@@ -15,6 +15,7 @@
       </container>
      <% end %>
 
+    <% if current_user == @user %>
     <div class="info_box">
       <h2>Edit Profile Here</h2>
         <form method="post" action="/single_user/edit/<%= @user.id %>">
@@ -23,6 +24,7 @@
           <input type="text" name="[user]password" placeholder="Password">
           <input type="submit" value="Submit Changes">
         </form>
+        <% end %>
     <% end %>
 
     <h2>Post Here</h2>
